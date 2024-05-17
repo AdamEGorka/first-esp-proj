@@ -5,16 +5,19 @@ int myFunction(int, int);
 
 void setup() {
   // put your setup code here, to run once:
-  int result = myFunction(2, 3);
-  pinMode(LED_BUILTIN, OUTPUT);
+  Serial.begin(9600);
+  pinMode(LED_BUILTIN,OUTPUT);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(1000);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(1000);
+  if (touchRead(13) < 10) {
+    digitalWrite(LED_BUILTIN, HIGH);
+  } else {
+    digitalWrite(LED_BUILTIN, LOW);
+  }
+  Serial.println(touchRead(13));
+  delay(100);
 }
 
 // put function definitions here:
